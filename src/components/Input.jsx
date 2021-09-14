@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const InputBase = styled.input`
-  padding: 7px;
+  width: 100%;
+  padding: 18px 15px;
   outline: none;
   background: none;
-  margin: 5px;
-  border: 1px solid gray;
+  border: 1px solid #d1d0d0;
   border-radius: 5.5px;
-  font-size: 1rem;
+  font-size: 0.97rem;
+  &::placeholder {
+    color: #adadad;
+  }
 `;
 
 export default function Input({ type, placeholder }) {

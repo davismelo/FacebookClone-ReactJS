@@ -4,7 +4,12 @@ import App from "./App";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+@font-face {
+  font-family:'Helvetica'; 
+  src:url('../public/fonts/Helvetica.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html {
   font-size: 18px;
@@ -13,10 +18,15 @@ html {
   margin:0;
   padding: 0;
   box-sizing:border-box;
+  font-family:'Helvetica';
 }
 body{
   background-color:#F0F2F5;
 }
+a{text-decoration:none;
+&:hover {
+  text-decoration:underline;
+}}
 `;
 
 ReactDOM.render(

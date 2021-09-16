@@ -23,7 +23,8 @@ html {
 body{
   background-color:#F0F2F5;
 }
-a{text-decoration:none;
+a{
+  text-decoration:none;
 &:hover {
   text-decoration:underline;
 }}

@@ -3,24 +3,28 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import styled from "styled-components";
 import Modal from "./modal";
-import logo from "./fbkLogo.svg";
+import logo from "../../img/fbkLogo.svg";
+
+const App = styled.div`
+  height: 100vh;
+  display: flex;
+`;
 
 const Container = styled.div`
   display: flex;
-  width: 1000px;
+  gap: 100px;
   justify-content: space-between;
   margin: auto;
-
+  padding: 0 25px;
   @media (max-width: 900px) {
-    width: max-content;
-    padding-bottom: 50px;
+    gap: 0;
+    padding: 0 0 50px;
     flex-direction: column;
     text-align: center;
   }
 `;
 
 const FormContainer = styled.form`
-  width: 400px;
   background-color: #fff;
   padding: 15px 15px 20px;
   box-shadow: 0px 0px 5px #a5a5a599;
@@ -30,39 +34,38 @@ const FormContainer = styled.form`
   text-align: center;
   button:first-of-type {
     width: 100%;
-    background-color: #166fe5;
-    font-size: 1.085rem;
+    background-color: var(--color-primary);
+    font-size: 1.1rem;
 
     &:hover {
-      background-color: #186ddb;
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  button:last-of-type {
+    background-color: var(--color-secondary);
+    font-size: 0.95rem;
+    padding: 15px;
+    &:hover {
+      background-color: var(--color-secondary-dark);
     }
   }
 
   input {
     padding: 15px;
     &:focus-within {
-      border-color: #166fe5;
-      box-shadow: 0px 0px 3px #166fe5;
+      border-color: var(--color-primary);
+      box-shadow: 0px 0px 3px var(--color-primary);
     }
   }
 
-  button:last-of-type {
-    width: max-content;
-    background-color: #38ac20;
-    font-size: 0.98rem;
-
-    &:hover {
-      background-color: #319e1b;
-    }
-  }
   @media (max-width: 900px) {
-    max-width: 90%;
+    width: 90%;
     margin: auto;
   }
 `;
 
 const TextSide = styled.div`
-  max-width: 515px;
   margin-top: 45px;
 
   @media (max-width: 900px) {
@@ -81,8 +84,8 @@ const TextSide = styled.div`
   }
 
   h2 {
-    font-size: 1.5rem;
     font-weight: 400;
+    max-width: 480px;
     margin-top: -10px;
     @media (max-width: 900px) {
       font-size: 1.3rem;
@@ -98,9 +101,9 @@ const BorderDiv = styled.div`
 `;
 
 const CreatePage = styled.div`
-  margin-top: 25px;
+  margin-top: 28px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.775rem;
   a {
     color: #000;
     font-weight: bold;
@@ -109,14 +112,13 @@ const CreatePage = styled.div`
 
 const ForgotPsswrd = styled.div`
   font-size: 0.75rem;
-  color: #1877f2;
-  a:visited {
-    color: #1877f2;
+  margin: 3px 0;
+  a {
+    color: #1877f4;
   }
-`;
-const App = styled.div`
-  height: 100vh;
-  display: flex;
+  a:visited {
+    color: #1877f4;
+  }
 `;
 
 export default function LoginScreen() {
@@ -145,7 +147,7 @@ export default function LoginScreen() {
                 Entrar
               </Button>
               <ForgotPsswrd>
-                <a href="$">Esqueceu a senha?</a>
+                <a href="#">Esqueceu a senha?</a>
               </ForgotPsswrd>
               <BorderDiv></BorderDiv>
               <Button
@@ -158,7 +160,7 @@ export default function LoginScreen() {
               </Button>
             </FormContainer>
             <CreatePage>
-              <a href="%">Criar uma Página </a>
+              <a href="#">Criar uma Página </a>
               <span>para uma celebridade, banda ou empresa.</span>
             </CreatePage>
           </div>

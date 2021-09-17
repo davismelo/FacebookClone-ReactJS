@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { BiX } from "react-icons/bi";
+import { IoIosHelpCircle } from "react-icons/io";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -30,7 +31,6 @@ const Container = styled.div`
 const TopSide = styled.div`
   padding: 15px;
   border-bottom: 1px solid #d4d4d4;
-  margin-bottom: 5px;
   position: relative;
   h3 {
     font-size: 1.8rem;
@@ -48,11 +48,21 @@ const TopSide = styled.div`
   }
 `;
 
-const BottomSide = styled.div`
-  padding: 15px;
+const InfoContainer = styled.div`
   display: grid;
   grid-gap: 10px;
+  margin-bottom: 15px;
+`;
+
+const NameArea = styled.div`
+  display: flex;
+  gap: 12px;
+`;
+
+const BottomSide = styled.div`
+  padding: 15px 15px 27px;
   button {
+    display: block;
     background-color: #00a400;
     font-size: 0.98rem;
     width: 50%;
@@ -62,6 +72,7 @@ const BottomSide = styled.div`
   p {
     font-size: 0.75rem;
     color: #6d6d6d;
+    margin-bottom: 25px;
   }
 `;
 
@@ -87,7 +98,7 @@ const DataContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
   grid-gap: 15px;
-
+  margin-bottom: 10px;
   select {
     padding: 10px 5px;
     border: 1px solid #d1d0d0;
@@ -96,25 +107,74 @@ const DataContainer = styled.div`
   }
 `;
 
-const NameArea = styled.div`
+const TopicContainer = styled.div`
   display: flex;
-  gap: 12px;
-`;
-
-const InfoContainer = styled.div`
-  display: grid;
-  grid-gap: 10px;
+  p {
+    margin: auto 0;
+    font-size: 0.67rem !important;
+  }
+  svg {
+    color: #808080;
+    font-size: 17px;
+  }
 `;
 
 export default function Modal({ setModal }) {
-  const days = [];
-  let index = 1;
-  while (index <= 31) {
-    days.push(index);
-    index++;
+  // Pegar dias
+  const days = ["Dia"];
+  let indexDays = 1;
+  while (indexDays <= 31) {
+    days.push(indexDays);
+    indexDays++;
   }
 
-  const newArr = days.map((el) => <option key={el}>{el}</option>);
+  const newArrDays = days.map((el) => (
+    <option key={el} value={el}>
+      {el}
+    </option>
+  ));
+
+  // Pegar os meses
+
+  const months = [
+    "Mês",
+    "Jan",
+    "Fev",
+    "Mar",
+    "Abr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Set",
+    "Out",
+    "Nov",
+    "Dez",
+  ];
+  const newArrMonths = months.map((el) => (
+    <option key={el} value={el}>
+      {el}
+    </option>
+  ));
+
+  // Pegar os anos
+
+  const years = [];
+  const currentYear = new Date().getFullYear();
+  let yearsInterval = currentYear - 120;
+
+  while (yearsInterval <= currentYear) {
+    yearsInterval === currentYear
+      ? years.push("Ano")
+      : years.push(yearsInterval);
+    yearsInterval++;
+  }
+
+  const newArrYears = years.map((el) => (
+    <option key={el} value={el}>
+      {el}
+    </option>
+  ));
 
   return (
     <Wrapper>
@@ -138,17 +198,27 @@ export default function Modal({ setModal }) {
             <Input placeholder="Nova senha" />
           </InfoContainer>
 
-          <p>Data de nascimento</p>
+          <TopicContainer>
+            <p>Data de nascimento</p>
+            <IoIosHelpCircle />
+          </TopicContainer>
 
           <DataContainer>
-            <select name="" id="">
-              {newArr}
+            <select name="birthday" id="birthday">
+              {newArrDays}
             </select>
-            <select name="" id=""></select>
-            <select name="" id=""></select>
+            <select name="birthmonth" id="birthmonth">
+              {newArrMonths}
+            </select>
+            <select name="birthyear" id="birthyear">
+              {newArrYears.reverse()}
+            </select>
           </DataContainer>
 
-          <p>Gênero</p>
+          <TopicContainer>
+            <p>Gênero</p>
+            <IoIosHelpCircle />
+          </TopicContainer>
 
           <DataContainer>
             <GenreContainer>

@@ -4,12 +4,11 @@ import styled from "styled-components";
 const InputBase = styled.input`
   width: 100%;
   outline: none;
-  background: none;
   border: 1px solid #d1d0d0;
   border-radius: 5.5px;
   font-size: 0.97rem;
   &::placeholder {
-    color: #adadad;
+    color: #a0a0a0;
   }
 `;
 

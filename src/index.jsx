@@ -10,6 +10,12 @@ const GlobalStyle = createGlobalStyle`
   font-weight: normal;
   font-style: normal;
 }
+:root {
+  --color-primary:#166fe5;
+  --color-primary-dark:#166cdd;
+  --color-secondary:#42b72a;
+  --color-secondary-dark:#319e1b;
+}
 
 html {
   font-size: 18px;
